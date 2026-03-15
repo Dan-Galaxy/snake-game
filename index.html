@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Basic document metadata and responsive viewport setup. -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake Game</title>
+
+    <!-- Font loading for the UI type style. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Main stylesheet for layout and visual theme. -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <!-- Header with title and live score indicators. -->
+      <header class="top-bar">
+        <div class="title-block">
+          <h1>Snake</h1>
+          <button id="mute-btn" type="button" aria-pressed="false">Sound: On</button>
+        </div>
+        <div class="stats">
+          <p><span>Score</span><strong id="score">0</strong></p>
+          <p><span>Best</span><strong id="best-score">0</strong></p>
+          <p><span>Speed</span><strong id="speed">120ms</strong></p>
+        </div>
+      </header>
+
+      <!-- Game board canvas and state overlay (start/game over). -->
+      <section class="board-wrap">
+        <canvas id="board" width="600" height="600" aria-label="Snake game board"></canvas>
+        <div id="overlay" class="overlay hidden" role="status" aria-live="polite">
+          <h2 id="overlay-title">Game Over</h2>
+          <p id="overlay-text">Press Play to start again.</p>
+          <button id="restart-btn" type="button">Play</button>
+        </div>
+      </section>
+
+      <!-- Touch-friendly directional controls shown on smaller screens. -->
+      <section class="controls" aria-label="Touch controls">
+        <button data-dir="up" aria-label="Move up">▲</button>
+        <div>
+          <button data-dir="left" aria-label="Move left">◀</button>
+          <button data-dir="down" aria-label="Move down">▼</button>
+          <button data-dir="right" aria-label="Move right">▶</button>
+        </div>
+      </section>
+
+      <!-- Quick usage hint for controls. -->
+      <p class="hint">Use Arrow keys or WASD, press P to pause, tap buttons on mobile.</p>
+
+      <section class="meta" aria-label="Game statistics">
+        <p><span>Games</span><strong id="games-played">0</strong></p>
+        <p><span>Longest</span><strong id="longest-snake">3</strong></p>
+      </section>
+
+      <section class="legend" aria-label="Pickup legend">
+        <p><span class="swatch food"></span> Food</p>
+        <p><span class="swatch fast"></span> Boost (faster)</p>
+        <p><span class="swatch slow"></span> Chill (slower)</p>
+      </section>
+    </main>
+
+    <!-- Game logic and rendering script. -->
+    <script src="script.js"></script>
+  </body>
+</html>
